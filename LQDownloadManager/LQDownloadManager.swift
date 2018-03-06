@@ -228,7 +228,8 @@ extension LQDownloadManager {
   
   //文件全路径
   func fileFullPath(_ url: String) -> String {
-    return downloadDirectory() + "/\(fileName(url))"
+    let newFileName: String = (fileName(url).removingPercentEncoding?.components(separatedBy: "?").first)!
+    return downloadDirectory() + "/\(newFileName)"
   }
   
   //下载路径: 重新下载或者重新生成的数据放在/Documents/TTDownload里面
